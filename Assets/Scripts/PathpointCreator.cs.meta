@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8e9049212a2fa4afa9e4de2a04ecc263
+timeCreated: 1496158094
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - pathpoint: {fileID: 1334042674470336, guid: faee899f1c18a4c8086b3891908dee45,
+      type: 2}
+  - pathpointList: {instanceID: 0}
+  - waypointList: {instanceID: 0}
+  - player: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
