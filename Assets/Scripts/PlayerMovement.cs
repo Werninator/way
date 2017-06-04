@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour {
-
+public class PlayerMovement : MonoBehaviour
+{
 	public Transform waypointList;
 	Transform nextWaypoint;
 
@@ -31,12 +31,16 @@ public class PlayerMovement : MonoBehaviour {
 
 	KeyCode bufferedInput = KeyCode.None;
 
-	void Start() {
+	int health = 10;
+
+	void Start()
+	{
 		rend = GetComponent<Renderer>();
 		defaultMaterial = rend.material;
 	}
 	
-	void Update() {
+	void Update()
+	{
 		if (currentErrorTimer != -1f) {
 			shake();
 		}
@@ -161,11 +165,33 @@ public class PlayerMovement : MonoBehaviour {
 		return direction;
 	}
 
-	void checkIfAtEnd() {
+	void checkIfAtEnd()
+	{
 		if (Vector3.Distance(transform.position, nextWaypoint.position) != 0f)
 			return;
 
 		onMyWay = false;
 		Destroy(nextWaypoint.gameObject);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (currentErrorTimer != -1)
+			return;
+
+		if (other.gameObject.name.Contains("Pathpoint")) {
+			Destroy(other.gameObject);
+			return;
+		}
+
+		if (other.gameObject.name.Contains("MovingBlock")) {
+			takeDamage();
+		}
+	}
+
+	void takeDamage()
+	{
+		health -= 1;
+		errorInMovement();
 	}
 }

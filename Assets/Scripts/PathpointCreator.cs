@@ -10,7 +10,8 @@ public class PathpointCreator : MonoBehaviour {
 	public Transform waypointList;
 	public Transform player;
 
-	void Start () {
+	void Start()
+	{
 		Transform pathFrom;
 		Transform pathTo;
 
@@ -45,21 +46,13 @@ public class PathpointCreator : MonoBehaviour {
 				for (float i = pathFrom.position.y; i < pathTo.position.y; i += step) {
 					GameObject p = createWaypoint(new Vector3(pathFrom.position.x, i, pathFrom.position.z));
 
-					p.transform.eulerAngles = new Vector3(
-						p.transform.eulerAngles.x,
-						p.transform.eulerAngles.y,
-						p.transform.eulerAngles.z + 90
-					);
+					p.transform.eulerAngles += new Vector3(0, 0, 90);
 				}
 			} else {
 				for (float i = pathFrom.position.y; i > pathTo.position.y; i -= step) {
 					GameObject p = createWaypoint(new Vector3(pathFrom.position.x, i, pathFrom.position.z));
 
-					p.transform.eulerAngles = new Vector3(
-						p.transform.eulerAngles.x,
-						p.transform.eulerAngles.y,
-						p.transform.eulerAngles.z + 90
-					);
+					p.transform.eulerAngles += new Vector3(0, 0, 90);
 				}
 			}
 		}	
