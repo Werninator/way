@@ -20,8 +20,6 @@ public class CameraFollowsPlayer : MonoBehaviour
 	}
 
 	void Update() {
-		Debug.Log("Player in Sight: " + (playerInSight() ? "yes" : "no"));
-
 		if (!playerInSight())
 			adjustPosition();
 	}
