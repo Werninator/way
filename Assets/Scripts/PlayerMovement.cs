@@ -31,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
 	KeyCode bufferedInput = KeyCode.None;
 
-	int health = 10;
-
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
@@ -185,13 +183,10 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		if (other.gameObject.name.Contains("MovingBlock")) {
-			takeDamage();
-		}
-	}
+			errorInMovement();
 
-	void takeDamage()
-	{
-		health -= 1;
-		errorInMovement();
+			// Reload the level
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
 	}
 }
