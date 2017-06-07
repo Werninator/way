@@ -191,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
 			return;
 		}
 
-		if (other.gameObject.name.Contains("MovingBlock")) {
+		if (other.gameObject.name.Contains("Hazard")) {
 			errorInMovement();
 
 			// Reload the level
