@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
 	KeyCode bufferedInput = KeyCode.None;
 
+	public PlayerStats playerStats;
+
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
@@ -151,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
 		rend.material = falseMovementMaterial;
 
 		posBefore = transform.position;
+
+		playerStats.hurtPlayer(1);
 	}
 
 	Vector3 getDirectionToWaypoint()
