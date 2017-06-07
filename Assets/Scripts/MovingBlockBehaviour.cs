@@ -23,6 +23,10 @@ public class MovingBlockBehaviour : MonoBehaviour
 	void Update()
 	{
 		handleTimer();
+	}
+
+	void FixedUpdate()
+	{
 		handleMovement();
 	}
 

@@ -37,7 +37,7 @@ public class CameraFollowsPlayer : MonoBehaviour
 	void adjustPosition()
 	{
 		Vector3 newVec = new Vector3(
-			Mathf.Floor((player.position.x + width / 2) / width) * width,
+			Mathf.Floor((player.position.x + width / 2) / width) * Mathf.Round(width),
 			Mathf.Floor((player.position.y + height / 2) / height) * height,
 			transform.position.z
 		);

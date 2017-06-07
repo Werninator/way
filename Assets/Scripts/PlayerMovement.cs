@@ -31,12 +31,14 @@ public class PlayerMovement : MonoBehaviour
 
 	KeyCode bufferedInput = KeyCode.None;
 
-	public PlayerStats playerStats;
+	PlayerStats playerStats;
 
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
 		defaultMaterial = rend.material;
+
+		playerStats = (PlayerStats) FindObjectOfType(typeof(PlayerStats));
 	}
 	
 	void Update()
@@ -57,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
 
 		if (nextWaypoint != null && !onMyWay)
 			handleInputs();
+	}
 
+	void FixedUpdate()
+	{
 		if (onMyWay) {
 			transform.position = Vector3.MoveTowards(transform.position, nextWaypoint.position, Time.deltaTime * speed);
 			checkIfAtEnd();
