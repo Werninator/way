@@ -152,14 +152,26 @@ public class PlayerMovement : MonoBehaviour
 		bufferedInput = KeyCode.None;
 	}
 
-	void errorInMovement()
+	public void errorInMovement()
 	{
+		if (rdy())
+			return;
+
 		currentErrorTimer = errorTimer;
 		rend.material = falseMovementMaterial;
 
 		posBefore = transform.position;
 
+		posBefore.x = Mathf.Round(posBefore.x);
+		posBefore.y = Mathf.Round(posBefore.y);
+		posBefore.z = Mathf.Round(posBefore.z);
+
 		playerStats.hurtPlayer(1);
+	}
+
+	public bool rdy()
+	{
+		return currentErrorTimer != -1f || onMyWay;
 	}
 
 	Vector3 getDirectionToWaypoint()
